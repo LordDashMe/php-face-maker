@@ -22,13 +22,10 @@ function readImageBlob() {
     $imagick = new Imagick();
     $imagick->setResolution(110, 110);
     $imagick->readImageBlob($svg_xml);
-
     unset($svg_xml);
-
     // $imagick->enhanceImage();
     $imagick->setImageFormat('png');
-    $dimagick = $imagick->getImageGeometry(); 
-
+    $dimension = $imagick->getImageGeometry(); 
     $svgimage = imagecreatefromstring($imagick->getImage());
 
     unset($imagick);
@@ -37,10 +34,10 @@ function readImageBlob() {
     
     list($width, $height) = getimagesize('brick.png');
 
-    $newwidth = $dimagick['width'];
-    $newheight = $dimagick['height'];
+    $newwidth = $dimension['width'];
+    $newheight = $dimension['height'];
 
-    unset($dimagick);
+    unset($dimension);
 
     $destination = imagecreatetruecolor($newwidth, $newheight);
     $color = imagecolorallocatealpha($destination, 255, 255, 255, 127); //fill transparent back
@@ -60,8 +57,8 @@ function readImageBlob() {
 
     $svgimage = ImageAddWatermark($svgimage, $destination, 0, 0, 0);
     
-    header("Content-Type: image/png");
-    imagepng($svgimage);
+    // header("Content-Type: image/png");
+    // imagepng($svgimage);
 
     ob_start();
 
@@ -79,16 +76,16 @@ function readImageBlob() {
 
 function ImageAddWatermark($im, $stamp, $onLeft, $onTop, $margin)
 {
-    if($onLeft){
+    if ($onLeft) {
         $orgX = $margin;
     } else {
-        $orgX = imagesx($im)-$margin-imagesx($stamp);
+        $orgX = ((imagesx($im) - $margin) - imagesx($stamp));
     }
 
-    if($onTop){
+    if ($onTop) {
         $orgY = $margin;
     } else {
-        $orgY = imagesy($im)-$margin-imagesy($stamp);
+        $orgY = ((imagesy($im) - $margin) - imagesy($stamp));
     }
 
     // creating a cut resource 
