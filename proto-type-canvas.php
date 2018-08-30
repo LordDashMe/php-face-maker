@@ -4,6 +4,9 @@ $rustart = getrusage();
 
 // echo phpinfo();exit;
 
+// Ubuntu 16.04 Tested
+// sudo apt-get install php-imagick
+// sudo apt-get install libgraphicsmagick1-dev libmagickcore-dev libmagickcore-6.q16-2 libmagickcore-6.q16-2-extra
 function readImageBlob() {
 
     $base64 = file_get_contents('image.txt');
