@@ -199,7 +199,7 @@ class CustomizedImageDoodle
         // Print Text On Image
         imagettftext($jpg_image, 25, 0, 75, 50, $white, $font_path, "This is shoes!");
         imagettftext($jpg_image, 25, 0, 75, 100, $white, $font_path, "This is Bag!");
-        imagettftext($jpg_image, 25, 0, 75, 150, $white, $gothicbi_font_path, wordwrap("This is Loooong Message!", 15, "\n"));
+        imagettftext($jpg_image, 25, 0, 75, 150, $white, $gothicbi_font_path, wordwrap("This is Loooong Message! Test", 15, "\n"));
 
         // Send Image to Browser
         imagejpeg($jpg_image);

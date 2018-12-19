@@ -142,7 +142,7 @@ class FaceModify extends FaceDetector {
  
 /* Using the extended class */
 $face_detect = new FaceModify('detection.dat');
-$face_detect->faceDetect('test.jpg');
+$face_detect->faceDetect('lena512color.jpg');
 $face_detect->resizeFace(600, 600);
 // $face_detect->toJpeg();
 
